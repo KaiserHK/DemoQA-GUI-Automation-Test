@@ -15,6 +15,9 @@ class LoginPage:
 
     invalidUsernameOrPasswordText;
 
+    alreadyLoggedInText;
+    alreadyLoggedInProfileLink;
+
     def __init__(self, driver):
         self.driver = driver;
         
