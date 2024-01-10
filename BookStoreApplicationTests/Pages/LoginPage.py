@@ -1,35 +1,25 @@
 from selenium import webdriver;
 from selenium.webdriver.common.keys import Keys;
 from selenium.webdriver.common.by import By;
+from BookStoreApplicationTests.Objects.Element import Element;
+
 class LoginPage:
 
     URL = "https://demoqa.com/login";
 
-    userFormId: str = "userForm";
-
-    usernameInputId: str = "userName";
-    passwordInputId: str = "password";
-    loginButtonId: str = "login";
-    newUserButtonId: str = "newUser";
-
-    invalidUsernameOrPasswordTextId: str = "name";
-    alreadyLoggedInTextId: str = "loading-label";
-    alreadyLoggedInProfileLinkLinkText: str = "profile";
-
     def __init__(self, driver):
         self.driver = driver;
+
+        self.userForm = Element(driver, By.ID, "userForm");
+
+        self.usernameInput = Element(driver, By.ID, "userName");
+        self.passwordInput = Element(driver, By.ID, "password");
+        self.loginButton = Element(driver, By.ID, "login");
+        self.newUserButton = Element(driver, By.ID, "newUser");
         
-        self.userForm = driver.find_element(By.ID, self.userFormId);
-
-        self.usernameInput = driver.find_element(By.ID, self.usernameInputId);
-        self.passwordInput = driver.find_element(By.ID, self.passwordInputId);
-        self.loginButton = driver.find_element(By.ID, self.loginButtonId);
-        self.newUserButton = driver.find_element(By.ID, self.newUserButtonId);
-
-        self.invalidUsernameOrPasswordTextTest = lambda id : driver.find_element(By.ID, id);
-        #invalidUsernameOrPasswordText = driver.find_element(By.ID, self.invalidUsernameOrPasswordTextId);
-        #alreadyLoggedInText = driver.find_element(By.ID, self.alreadyLoggedInTextId);
-        #alreadyLoggedInProfileLink = driver.find_element(By.LINK_TEXT, self.alreadyLoggedInProfileLinkLinkText);
+        self.invalidUsernameOrPasswordText = Element(driver, By.ID, "name");
+        self.alreadyLoggedInProfileLink = Element(driver, By.ID, "loading-label");
+        self.alreadyLoggedInProfileLinkLinkText = Element(driver, By.LINK_TEXT, "profile");
         
     #Actions
     def EnterUsername(self, username: str) -> None:
@@ -38,16 +28,16 @@ class LoginPage:
         #add wait
     
     def EnterPassword(self, password: str) -> None:
-        usernameInput.clear();
-        usernameInput.send_keys(password);
+        self.passwordInput.clear();
+        self.passwordInput.send_keys(password);
         #add wait
     
     def ClickLoginButton(self):
-        loginButton.click();
+        self.loginButton.click();
         #add wait
     
     def ClickNewUserButton(self):
-        newUserButton.click();
+        self.newUserButton.click();
         #add wait
 
     #Asserts
