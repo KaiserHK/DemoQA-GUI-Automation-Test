@@ -4,7 +4,7 @@ from selenium.webdriver.common.keys import Keys;
 class ProfilePage:
 
     URL = "https://demoqa.com/profile";
-
+    
     profileWrapperContainer;
 
     bookSearchInput;
@@ -24,6 +24,10 @@ class ProfilePage:
     goToBookStoreButton;
     deleteAccountButton;
     deleteAllBooksButton;
+
+    notLoggedInLabel;
+    loginLink;
+    registerLink;
 
 
     def __init__(self, driver):

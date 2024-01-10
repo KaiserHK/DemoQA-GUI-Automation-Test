@@ -8,6 +8,7 @@ class BookStorePage:
     searchBoxInput;
     searchBoxButton;
     usernameValue;
+    loginButton;
     logoutButton;
 
     bookStoreTable;
