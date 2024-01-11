@@ -7,9 +7,9 @@ from BookStoreApplicationTests.Pages.ProfilePage import ProfilePage;
 driver = webdriver.Firefox();
 driver.implicitly_wait(5);
 
-class TestRegistration:
+class TestLogin:
 
-    def test_LoginToBookStore(self):
+    def test_UserLogsIn(self):
         # Arrange
         loginPage = LoginPage(driver);
         profilePage = ProfilePage(driver);
@@ -25,10 +25,12 @@ class TestRegistration:
 
         #Assert
         assert profilePage.VerifyIsGoToBookStoreButtonIsDisplayed() == True;
-
-
-class TestLogin:
-    pass;
-
-class TestLogout:
-    pass;
+    
+    def test_LoggedInUserViewsLoginPage(self):
+        pass;
+    
+    def test_LoggedInUserViewsProfilePage(self):
+        pass;
+    
+    def test_LoggedInUserViewsBookStorePage(self):
+        pass;
