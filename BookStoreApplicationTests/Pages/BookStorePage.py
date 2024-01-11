@@ -5,18 +5,18 @@ class BookStorePage:
 
     URL = "https://demoqa.com/books";
 
-    searchBoxInput;
-    searchBoxButton;
-    usernameValue;
-    loginButton;
-    logoutButton;
+    def __init__(self, driver):
+        self.driver = driver;
 
-    bookStoreTable;
-    previousButton;
-    nextButton;
-    pageNumberInput;
-    totalPagesText;
-    numberOfRowsDropdown;
+        self.searchBoxInput = None;
+        self.searchBoxButton = None;
+        self.usernameValue = None;
+        self.loginButton = None;
+        self.logoutButton = None;
 
-    def __init__(self):
-        pass;
+        self.bookStoreTable = None;
+        self.previousButton = None;
+        self.nextButton = None;
+        self.pageNumberInput = None;
+        self.totalPagesText = None;
+        self.numberOfRowsDropdown = None;

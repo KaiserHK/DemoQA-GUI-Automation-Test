@@ -5,29 +5,29 @@ class BookPage:
 
     URL = "https://demoqa.com/books?book=9781449331818";
 
-    usernameText;
-    logoutButton;
+    def __init__(self, driver):
+        self.driver = driver;
 
-    ISBNLabel;
-    ISBNText;
-    titleLabel;
-    titleText;
-    subTitleLabel;
-    subTitleText;
-    authorLabel;
-    authorText;
-    publisherLabel;
-    publisherText;
-    totalPagesLabel;
-    totalPagesText;
-    descriptionLabel;
-    descriptionText;
-    websiteLabel;
-    websiteText;
+        self.usernameText = None;
+        self.logoutButton = None;
 
-    backToBookStoreButton;
-    addToYourCollectionButton;
+        self.ISBNLabel = None;
+        self.ISBNText = None;
+        self.titleLabel = None;
+        self.titleText = None;
+        self.subTitleLabel = None;
+        self.subTitleText = None;
+        self.authorLabel = None;
+        self.authorText = None;
+        self.publisherLabel = None;
+        self.publisherText = None;
+        self.totalPagesLabel = None;
+        self.totalPagesText = None;
+        self.descriptionLabel = None;
+        self.descriptionText = None;
+        self.websiteLabel = None;
+        self.websiteText = None;
 
-    def __init__(self):
-        pass;
+        self.backToBookStoreButton = None;
+        self.addToYourCollectionButton = None;
     

@@ -18,8 +18,12 @@ class LoginPage:
         self.newUserButton = Element(driver, By.ID, "newUser");
         
         self.invalidUsernameOrPasswordText = Element(driver, By.ID, "name");
-        self.alreadyLoggedInProfileLink = Element(driver, By.ID, "loading-label");
-        self.alreadyLoggedInProfileLinkLinkText = Element(driver, By.LINK_TEXT, "profile");
+
+        self.usernameOfCurrentUser = Element(driver, By.ID, "userName-value");
+        self.logoutButton = Element(driver, By.ID, "submit");
+        self.alreadyLoggedInText = Element(driver, By.ID, "loading-label");
+        self.alreadyLoggedInProfileLink = Element(driver, By.LINK_TEXT, "profile");
+        
         
     #Actions
     def EnterUsername(self, username: str) -> None:
@@ -41,8 +45,5 @@ class LoginPage:
         #add wait
 
     #Asserts
-    def VerifyUsernameIsInvalid(self):
-        pass;
-    
-    def VerifyPasswordIsInvalid(self):
-        pass;
+    def VerifyUsernameOfCurrentUser(self, expectedUsername: str) -> None:
+        assert self.usernameOfCurrentUser.get_text() == expectedUsername;

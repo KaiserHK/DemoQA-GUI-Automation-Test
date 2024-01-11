@@ -37,5 +37,5 @@ class ProfilePage:
     # Actions
 
     # Assertions
-    def VerifyIsGoToBookStoreButtonIsDisplayed(self) -> bool:
-        return self.goToBookStoreButton.is_displayed();
+    def VerifyGoToBookStoreButtonIsDisplayed(self) -> None:
+        assert self.goToBookStoreButton.is_displayed() == True;
