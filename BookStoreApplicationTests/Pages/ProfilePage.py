@@ -35,6 +35,8 @@ class ProfilePage:
         self.registerLink = None;
     
     # Actions
+    def ClickGoToBookStoreButton(self):
+        self.goToBookStoreButton.click();
 
     # Assertions
     def VerifyGoToBookStoreButtonIsDisplayed(self) -> None:

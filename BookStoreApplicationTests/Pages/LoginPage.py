@@ -45,5 +45,3 @@ class LoginPage:
         #add wait
 
     #Asserts
-    def VerifyUsernameOfCurrentUser(self, expectedUsername: str) -> None:
-        assert self.usernameOfCurrentUser.get_text() == expectedUsername;

@@ -5,5 +5,5 @@ class RegisterPage:
     
     URL = "https://demoqa.com/register";
 
-    def __init__(self):
-        pass;
+    def __init__(self, driver):
+        self.driver = driver;

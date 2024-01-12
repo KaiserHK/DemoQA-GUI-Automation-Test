@@ -1,5 +1,7 @@
 from selenium import webdriver;
 from selenium.webdriver.common.keys import Keys;
+from selenium.webdriver.common.by import By;
+from BookStoreApplicationTests.Objects.Element import Element;
 
 class BookStorePage:
 
@@ -16,7 +18,7 @@ class BookStorePage:
 
         self.bookStoreTable = None;
         self.previousButton = None;
-        self.nextButton = None;
+        self.nextButton = Element(driver, By.XPATH, "//button[@class='-btn' and text()='Next']");
         self.pageNumberInput = None;
         self.totalPagesText = None;
         self.numberOfRowsDropdown = None;

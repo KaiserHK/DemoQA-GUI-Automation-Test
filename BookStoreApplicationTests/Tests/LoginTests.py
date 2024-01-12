@@ -4,73 +4,80 @@ from selenium.webdriver.support import expected_conditions as EC;
 from selenium.common.exceptions import TimeoutException;
 from selenium.webdriver.firefox.options import Options;
 
+from BookStoreApplicationTests.Objects.TestBase import TestBase;
+
 import pytest;
 
-from BookStoreApplicationTests.Pages.LoginPage import LoginPage;
-from BookStoreApplicationTests.Pages.RegisterPage import RegisterPage;
-from BookStoreApplicationTests.Pages.ProfilePage import ProfilePage;
-from BookStoreApplicationTests.Pages.BookStoreNavigationPage import BookStoreNavigationPage;
-from BookStoreApplicationTests.Pages.BookStorePage import BookStorePage;
 from BookStoreApplicationTests.Pages.BookPage import BookPage;
 from BookStoreApplicationTests.Pages.BookStoreApiPage import BookStoreApiPage;
+from BookStoreApplicationTests.Pages.BookStoreNavigationPage import BookStoreNavigationPage;
+from BookStoreApplicationTests.Pages.BookStorePage import BookStorePage;
+from BookStoreApplicationTests.Pages.LoginPage import LoginPage;
+from BookStoreApplicationTests.Pages.ProfilePage import ProfilePage;
+from BookStoreApplicationTests.Pages.RegisterPage import RegisterPage;
+from BookStoreApplicationTests.Pages.UserHeaderPage import UserHeaderPage;
 
-class TestLogin:
-
-    @pytest.fixture(autouse=True)
-    def Driver(self):
-        options = Options();
-        options.page_load_strategy = "eager";
-        self.driver = webdriver.Firefox(options=options);
-        yield;
-        self.driver.quit();
+class TestLogin (TestBase):
 
     def test_UserLogsIn(self):
         # Arrange
-        driver = self.driver;
-        loginPage = LoginPage(driver);
-        profilePage = ProfilePage(driver);
         username = "SCool";
         password = "ThisIsCool01!";
 
         # Act
-        driver.get(loginPage.URL);
-        loginPage.EnterUsername(username);
-        loginPage.EnterPassword(password);
-        loginPage.ClickLoginButton();
-        profilePage.goToBookStoreButton.wait_for_element();
+        self.driver.get(self.loginPage.URL);
+        self.loginPage.EnterUsername(username);
+        self.loginPage.EnterPassword(password);
+        self.loginPage.ClickLoginButton();
+        self.profilePage.goToBookStoreButton.wait_for_element();
 
         #Assert
-        profilePage.VerifyGoToBookStoreButtonIsDisplayed();
+        self.profilePage.VerifyGoToBookStoreButtonIsDisplayed();
     
     def test_LoggedInUserViewsLoginPage(self):
         # Arrange
-        driver = self.driver;
-        loginPage = LoginPage(driver);
-        profilePage = ProfilePage(driver);
-        bookStoreNavigationPage = BookStoreNavigationPage(driver);
-
         username = "SCool";
         password = "ThisIsCool01!";
 
         # Act
-        driver.get(loginPage.URL);
-        loginPage.EnterUsername(username);
-        loginPage.EnterPassword(password);
-        loginPage.ClickLoginButton();
-        profilePage.goToBookStoreButton.wait_for_element();
-        driver.get(loginPage.URL);
+        self.driver.get(self.loginPage.URL);
+        self.loginPage.EnterUsername(username);
+        self.loginPage.EnterPassword(password);
+        self.loginPage.ClickLoginButton();
+        self.profilePage.goToBookStoreButton.wait_for_element();
+        self.driver.get(self.loginPage.URL);
 
         # Assert
-        loginPage.VerifyUsernameOfCurrentUser(username);
+        self.userHeaderPage.VerifyUsernameOfCurrentUser(username);
     
     def test_LoggedInUserViewsProfilePage(self):
         # Arrange
+        username = "SCool";
+        password = "ThisIsCool01!";
+
         # Act
+        self.driver.get(self.loginPage.URL);
+        self.loginPage.EnterUsername(username);
+        self.loginPage.EnterPassword(password);
+        self.loginPage.ClickLoginButton();
+        self.profilePage.goToBookStoreButton.wait_for_element();
+
         # Assert
-        pass;
+        self.userHeaderPage.VerifyUsernameOfCurrentUser(username);
     
     def test_LoggedInUserViewsBookStorePage(self):
         # Arrange
+        username = "SCool";
+        password = "ThisIsCool01!";
+
         # Act
+        self.driver.get(self.loginPage.URL);
+        self.loginPage.EnterUsername(username);
+        self.loginPage.EnterPassword(password);
+        self.loginPage.ClickLoginButton();
+        self.profilePage.goToBookStoreButton.wait_for_element();
+        self.driver.get(self.bookStorePage.URL);
+        self.bookStorePage.nextButton.wait_for_element();
+
         # Assert
-        pass;
+        self.userHeaderPage.VerifyUsernameOfCurrentUser(username);
