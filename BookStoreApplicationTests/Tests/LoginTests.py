@@ -5,6 +5,7 @@ from selenium.common.exceptions import TimeoutException;
 from selenium.webdriver.firefox.options import Options;
 
 from BookStoreApplicationTests.Objects.TestBase import TestBase;
+from BookStoreApplicationTests.Objects.User import User;
 
 import pytest;
 
@@ -21,13 +22,13 @@ class TestLogin (TestBase):
 
     def test_UserLogsIn(self):
         # Arrange
-        username = "SCool";
-        password = "ThisIsCool01!";
+        user = User();
+        user.RegisterUserViaApi();
 
         # Act
         self.driver.get(self.loginPage.URL);
-        self.loginPage.EnterUsername(username);
-        self.loginPage.EnterPassword(password);
+        self.loginPage.EnterUsername(user.username);
+        self.loginPage.EnterPassword(user.password);
         self.loginPage.ClickLoginButton();
         self.profilePage.goToBookStoreButton.WaitForElement();
 
@@ -36,48 +37,48 @@ class TestLogin (TestBase):
     
     def test_LoggedInUserViewsLoginPage(self):
         # Arrange
-        username = "SCool";
-        password = "ThisIsCool01!";
+        user = User();
+        user.RegisterUserViaApi();
 
         # Act
         self.driver.get(self.loginPage.URL);
-        self.loginPage.EnterUsername(username);
-        self.loginPage.EnterPassword(password);
+        self.loginPage.EnterUsername(user.username);
+        self.loginPage.EnterPassword(user.password);
         self.loginPage.ClickLoginButton();
         self.profilePage.goToBookStoreButton.WaitForElement();
         self.driver.get(self.loginPage.URL);
 
         # Assert
-        self.userHeaderPage.VerifyUsernameOfCurrentUser(username);
+        self.userHeaderPage.VerifyUsernameOfCurrentUser(user.username);
     
     def test_LoggedInUserViewsProfilePage(self):
         # Arrange
-        username = "SCool";
-        password = "ThisIsCool01!";
+        user = User();
+        user.RegisterUserViaApi();
 
         # Act
         self.driver.get(self.loginPage.URL);
-        self.loginPage.EnterUsername(username);
-        self.loginPage.EnterPassword(password);
+        self.loginPage.EnterUsername(user.username);
+        self.loginPage.EnterPassword(user.password);
         self.loginPage.ClickLoginButton();
         self.profilePage.goToBookStoreButton.WaitForElement();
 
         # Assert
-        self.userHeaderPage.VerifyUsernameOfCurrentUser(username);
+        self.userHeaderPage.VerifyUsernameOfCurrentUser(user.username);
     
     def test_LoggedInUserViewsBookStorePage(self):
         # Arrange
-        username = "SCool";
-        password = "ThisIsCool01!";
+        user = User();
+        user.RegisterUserViaApi();
 
         # Act
         self.driver.get(self.loginPage.URL);
-        self.loginPage.EnterUsername(username);
-        self.loginPage.EnterPassword(password);
+        self.loginPage.EnterUsername(user.username);
+        self.loginPage.EnterPassword(user.password);
         self.loginPage.ClickLoginButton();
         self.profilePage.goToBookStoreButton.WaitForElement();
         self.driver.get(self.bookStorePage.URL);
         self.bookStorePage.nextButton.WaitForElement();
 
         # Assert
-        self.userHeaderPage.VerifyUsernameOfCurrentUser(username);
+        self.userHeaderPage.VerifyUsernameOfCurrentUser(user.username);
