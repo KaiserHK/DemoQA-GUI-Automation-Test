@@ -33,7 +33,6 @@ class TestRegistration (TestBase):
         self.registerPage.EnterLastName(user.lastName);
         self.registerPage.EnterUsername(user.username);
         self.registerPage.EnterPassword(user.password);
-
         self.registerPage.WaitAndSwitchToCaptchaIframe();
         self.registerPage.captcha.WaitForElementClickable();
         self.registerPage.ClickCaptcha();
@@ -47,12 +46,38 @@ class TestRegistration (TestBase):
     
     def test_NewUserTriesToRegisterWithInvalidPassword(self):
         # Arrange
+        user = User();
+        invalidPassword = "123";
+
         # Act
+        self.driver.get(self.registerPage.URL);
+        self.registerPage.EnterFirstName(user.firstName);
+        self.registerPage.EnterLastName(user.lastName);
+        self.registerPage.EnterUsername(user.username);
+        self.registerPage.EnterPassword(invalidPassword);
+        self.registerPage.WaitAndSwitchToCaptchaIframe();
+        self.registerPage.captcha.WaitForElementClickable();
+        self.registerPage.ClickCaptcha();
+        sleep(10); # Tester must manually complete captcha
+        self.driver.switch_to.parent_frame();
+        self.registerPage.ClickRegisterButton();
+        self.registerPage.invalidPasswordWarningText.WaitForElement();
+
         # Assert
-        pass;
+        self.registerPage.VerifyInvalidPasswordTextIsDisplayed();
     
     def test_NewUserTriesToRegisterWithoutCompletingCaptcha(self):
         # Arrange
+        user = User();
+
         # Act
+        self.driver.get(self.registerPage.URL);
+        self.registerPage.EnterFirstName(user.firstName);
+        self.registerPage.EnterLastName(user.lastName);
+        self.registerPage.EnterUsername(user.username);
+        self.registerPage.EnterPassword(user.password);
+        self.registerPage.ClickRegisterButton();
+        self.registerPage.verifyCaptchaText.WaitForElement();
+
         # Assert
-        pass;
+        self.registerPage.VerifyCaptchaTextIsDisplayed();

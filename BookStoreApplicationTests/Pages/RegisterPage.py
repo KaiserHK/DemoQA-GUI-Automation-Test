@@ -19,7 +19,11 @@ class RegisterPage:
         self.captcha = Element(driver, By.CSS_SELECTOR, "span#recaptcha-anchor");
         self.captchaSpinner = Element(driver, By.CSS_SELECTOR, "div.recaptcha-checkbox-spinner");
         self.registerButton = Element(driver, By.ID, "register");
-    
+        
+        self.invalidPasswordWarningText = Element(driver, By.XPATH, "//p[contains(., 'Passwords must have at least one non alphanumeric character, one digit')]");
+        self.verifyCaptchaText = Element(driver, By.XPATH, "//p[text()='Please verify reCaptcha to register!']");
+
+    # Actions
     def EnterFirstName(self, firstName: str) -> None:
         self.firstNameInput.Clear();
         self.firstNameInput.SendKeys(firstName);
@@ -44,3 +48,10 @@ class RegisterPage:
     
     def WaitAndSwitchToCaptchaIframe(self) -> None:
         self.captchaIframe.WaitForIframeAndSwitch();
+    
+    # Assertions
+    def VerifyInvalidPasswordTextIsDisplayed(self) -> None:
+        assert self.invalidPasswordWarningText.IsDisplayed();
+    
+    def VerifyCaptchaTextIsDisplayed(self) -> None:
+        assert self.verifyCaptchaText.IsDisplayed();
