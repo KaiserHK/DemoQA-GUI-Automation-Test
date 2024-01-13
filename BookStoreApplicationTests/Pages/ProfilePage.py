@@ -36,8 +36,8 @@ class ProfilePage:
     
     # Actions
     def ClickGoToBookStoreButton(self):
-        self.goToBookStoreButton.click();
+        self.goToBookStoreButton.Click();
 
     # Assertions
     def VerifyGoToBookStoreButtonIsDisplayed(self) -> None:
-        assert self.goToBookStoreButton.is_displayed() == True;
+        assert self.goToBookStoreButton.IsDisplayed() == True;

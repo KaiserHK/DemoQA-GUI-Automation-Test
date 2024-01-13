@@ -34,31 +34,13 @@ class TestRegistration (TestBase):
         self.registerPage.EnterUsername(user.username);
         self.registerPage.EnterPassword(user.password);
 
-
         self.registerPage.WaitAndSwitchToCaptchaIframe();
-        self.registerPage.captcha.wait_for_element_clickable();
+        self.registerPage.captcha.WaitForElementClickable();
         self.registerPage.ClickCaptcha();
         sleep(10); # Tester must manually complete captcha
         self.driver.switch_to.parent_frame();
         self.registerPage.ClickRegisterButton();
         WebDriverWait(self.driver, 5.0).until(EC.alert_is_present());
-        
-        # cookieFile = open("./../Objects/CaptchaCookie.txt", "r");
-        # cookie = cookieFile.readline();
-        # print(cookie);
-        # cookieFile.close();
-        # if (cookie == ""):
-        #     self.registerPage.ClickCaptcha();
-        #     sleep(10);
-        #     cookieFile = open("./../Objects/CaptchaCookie.txt", "w+");
-        #     cookie = self.driver.get_cookie("_GRECAPTCHA");
-        #     print(cookie["value"]);
-        #     cookieFile.writelines(cookie["value"]);
-        #     cookieFile.close();
-        # else:
-        #     self.driver.add_cookie({'name' : '_GRECAPTCHA', 'value' : cookie});
-        #     self.registerPage.ClickCaptcha();
-        #     self.registerPage.captchaSpinner.wait_for_element_is_not_displayed();
 
         # Assert
         assert Alert(self.driver).text == "User Register Successfully.";

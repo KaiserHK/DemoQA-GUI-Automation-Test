@@ -27,21 +27,21 @@ class LoginPage:
         
     #Actions
     def EnterUsername(self, username: str) -> None:
-        self.usernameInput.clear();
-        self.usernameInput.send_keys(username);
+        self.usernameInput.Clear();
+        self.usernameInput.SendKeys(username);
         #add wait
     
     def EnterPassword(self, password: str) -> None:
-        self.passwordInput.clear();
-        self.passwordInput.send_keys(password);
+        self.passwordInput.Clear();
+        self.passwordInput.SendKeys(password);
         #add wait
     
     def ClickLoginButton(self):
-        self.loginButton.click();
+        self.loginButton.Click();
         #add wait
     
     def ClickNewUserButton(self):
-        self.newUserButton.click();
+        self.newUserButton.Click();
         #add wait
 
     #Asserts

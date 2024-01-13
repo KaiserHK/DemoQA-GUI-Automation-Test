@@ -29,7 +29,7 @@ class TestLogin (TestBase):
         self.loginPage.EnterUsername(username);
         self.loginPage.EnterPassword(password);
         self.loginPage.ClickLoginButton();
-        self.profilePage.goToBookStoreButton.wait_for_element();
+        self.profilePage.goToBookStoreButton.WaitForElement();
 
         #Assert
         self.profilePage.VerifyGoToBookStoreButtonIsDisplayed();
@@ -44,7 +44,7 @@ class TestLogin (TestBase):
         self.loginPage.EnterUsername(username);
         self.loginPage.EnterPassword(password);
         self.loginPage.ClickLoginButton();
-        self.profilePage.goToBookStoreButton.wait_for_element();
+        self.profilePage.goToBookStoreButton.WaitForElement();
         self.driver.get(self.loginPage.URL);
 
         # Assert
@@ -60,7 +60,7 @@ class TestLogin (TestBase):
         self.loginPage.EnterUsername(username);
         self.loginPage.EnterPassword(password);
         self.loginPage.ClickLoginButton();
-        self.profilePage.goToBookStoreButton.wait_for_element();
+        self.profilePage.goToBookStoreButton.WaitForElement();
 
         # Assert
         self.userHeaderPage.VerifyUsernameOfCurrentUser(username);
@@ -75,9 +75,9 @@ class TestLogin (TestBase):
         self.loginPage.EnterUsername(username);
         self.loginPage.EnterPassword(password);
         self.loginPage.ClickLoginButton();
-        self.profilePage.goToBookStoreButton.wait_for_element();
+        self.profilePage.goToBookStoreButton.WaitForElement();
         self.driver.get(self.bookStorePage.URL);
-        self.bookStorePage.nextButton.wait_for_element();
+        self.bookStorePage.nextButton.WaitForElement();
 
         # Assert
         self.userHeaderPage.VerifyUsernameOfCurrentUser(username);

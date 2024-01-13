@@ -21,26 +21,26 @@ class RegisterPage:
         self.registerButton = Element(driver, By.ID, "register");
     
     def EnterFirstName(self, firstName: str) -> None:
-        self.firstNameInput.clear();
-        self.firstNameInput.send_keys(firstName);
+        self.firstNameInput.Clear();
+        self.firstNameInput.SendKeys(firstName);
     
     def EnterLastName(self, lastName: str) -> None:
-        self.lastNameInput.clear();
-        self.lastNameInput.send_keys(lastName);
+        self.lastNameInput.Clear();
+        self.lastNameInput.SendKeys(lastName);
     
     def EnterUsername(self, username: str) -> None:
-        self.usernameInput.clear();
-        self.usernameInput.send_keys(username);
+        self.usernameInput.Clear();
+        self.usernameInput.SendKeys(username);
     
     def EnterPassword(self, password: str) -> None:
-        self.passwordInput.clear();
-        self.passwordInput.send_keys(password);
+        self.passwordInput.Clear();
+        self.passwordInput.SendKeys(password);
     
     def ClickCaptcha(self) -> None:
-        self.captcha.click();
+        self.captcha.Click();
     
     def ClickRegisterButton(self) -> None:
-        self.registerButton.click();
+        self.registerButton.Click();
     
     def WaitAndSwitchToCaptchaIframe(self) -> None:
-        self.captchaIframe.wait_for_frame_and_switch_to_it();
+        self.captchaIframe.WaitForIframeAndSwitch();

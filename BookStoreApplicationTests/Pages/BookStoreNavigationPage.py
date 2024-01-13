@@ -16,6 +16,6 @@ class BookStoreNavigationPage:
     
     # Actions
     def ClickLoginPageMenuButton(self):
-        self.loginMenuButton.click();
+        self.loginMenuButton.Click();
     
     # Assertions

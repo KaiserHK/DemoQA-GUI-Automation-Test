@@ -16,4 +16,4 @@ class UserHeaderPage:
 
     # Assertions
     def VerifyUsernameOfCurrentUser(self, expectedUsername: str) -> None:
-        assert self.username.get_text() == expectedUsername;
+        assert self.username.GetText() == expectedUsername;
