@@ -1,5 +1,5 @@
 # DemoQA GUI Automation Test
-This repository contains some example code and documentation for browser testing the DemoQA BookStore web application. The DemoQA BookStore is a small web app that is used by QA and Test Automation Engineers to practice and showcase their abilities. Here is the URL to the login page of the application: https://demoqa.com/login.
+This repository contains code and documentation for browser testing the DemoQA BookStore web application. The DemoQA BookStore is a small web app that is used by QA and Test Automation Engineers to practice and showcase their abilities. Here is the URL to the login page of the application: https://demoqa.com/login.
 
 # Technologies
 For this project, I chose to utilize Python (3.12.1) with the following modules:
