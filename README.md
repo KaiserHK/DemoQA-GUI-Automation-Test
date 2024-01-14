@@ -8,9 +8,9 @@ For this project, I chose to utilize Python (3.12.1) with the following modules:
 - Requests
 
 # How to Install and Run (Windows 10)
-1. Install Python (I used Python 3.12.1 for this project)
-2. Setup virtual environment by running "python -m venv {project root path}" in the command line
-3. Activate the virtual environment by running "{path to venv folder}\Scripts\Activate"
+1. Install Python (I used Python 3.12.1 for this project).
+2. Setup virtual environment by running "python -m venv {project root path}" in the command line.
+3. Activate the virtual environment by running "{path to venv folder}\Scripts\Activate".
 4. Install the required modules by running "pip install {selenium/pytest/requests}" while the virtual environment is activated.
 5. Clone/Download the code in this repo (I recommend storing the BookStoreApplicationTests folder right next to the virtual environment folder).
 6. Navigate to the "/BookStoreApplicationTests/Tests/" folder in the command line.
